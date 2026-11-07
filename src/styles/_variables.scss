@@ -1,0 +1,24 @@
+@use "helpers/functions" as *;
+
+// Сетка
+$container-width: 1262;
+$container-padding-x: 15;
+
+// Анимации
+$transition-duration: 0.3s;
+$transition-base: all $transition-duration ease-in-out;
+
+// Шрифты
+$font-family: "Poppins", sans-serif;
+$second-family: "Roboto", sans-serif;
+
+// ==========================================================================
+// ЦВЕТОВАЯ ПАЛИТРА (UI-KIT) — ПРОЕКТ HOSTUS-POCUS
+// ==========================================================================
+
+$white-color: #fff;
+$black-color: #000;
+$link-color: #414141;
+$title-color: #212121;
+$text-color: #c5c5c5;
+$bg-color: #de3c3c;

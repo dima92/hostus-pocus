@@ -1,0 +1,49 @@
+@use "../helpers" as *;
+@use "../variables" as *;
+
+.footer {
+  width: 100%;
+  background-color: $white-color;
+  padding-block: fluid(30, 20);
+
+  &__container {
+    max-width: to-rem(1233);
+    @include flex(row, space-between, center, $wrap: wrap);
+
+    @include respond-to("tablet") {
+      flex-direction: column;
+      gap: to-rem(20);
+      text-align: center;
+    }
+  }
+
+  &__content {
+    @include flex(row, center, center, 60, wrap);
+
+    @include respond-to("tablet") {
+      flex-direction: column;
+      gap: to-rem(8);
+    }
+  }
+
+  &__logo {
+    flex-shrink: 0;
+
+    .logo__icon {
+      fill: $title-color;
+      width: to-rem(91);
+      height: to-rem(34);
+    }
+  }
+
+  &__text {
+    font-family: $second-family;
+    font-size: to-rem(13);
+    color: $text-color;
+    white-space: nowrap;
+
+    @include respond-to("tablet") {
+      white-space: normal;
+    }
+  }
+}

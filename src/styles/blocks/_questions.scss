@@ -1,0 +1,85 @@
+@use "../helpers" as *;
+@use "../variables" as *;
+
+.questions {
+  padding-block: fluid(80, 40);
+  background-color: $white-color;
+
+  &__box {
+    width: 100%;
+    max-width: to-rem(840);
+    min-height: to-rem(260);
+    margin-inline: auto;
+    background-color: $white-color;
+    border-radius: to-rem(6);
+
+    border: to-rem(1) solid rgba(197, 197, 197, 0.25);
+    box-shadow: 0 to-rem(15) to-rem(45) rgba($black-color, 0.03);
+
+    @include flex(column, center, center, to-rem(12));
+    padding: fluid(30, 20) fluid(40, 16);
+    text-align: center;
+
+    @include respond-to("tablet") {
+      min-height: auto;
+      gap: to-rem(20);
+    }
+  }
+
+  &__title {
+    @include fluid-text(24, 20, 1.2);
+    font-weight: 500;
+    color: $title-color;
+  }
+
+  &__subtitle {
+    font-family: $second-family;
+    font-size: to-rem(14);
+    color: $text-color;
+    line-height: 1.71;
+    margin-bottom: to-rem(30);
+
+    @include respond-to("tablet") {
+      margin-bottom: 0;
+    }
+  }
+
+  &__actions {
+    @include flex(row, center, center, to-rem(60));
+
+    @include respond-to("mobile") {
+      flex-direction: column;
+      width: 100%;
+      gap: to-rem(12);
+    }
+  }
+
+  &__btn {
+    @include respond-to("mobile") {
+      width: 100%;
+    }
+  }
+}
+
+.btn-outline {
+  @include flex(row, center, center, 0, $isInline: true);
+  border-radius: to-rem(4);
+  padding: to-rem(13) to-rem(35);
+  font-family: $font-family;
+  font-weight: 500;
+  font-size: to-rem(13);
+  color: $title-color;
+  background-color: transparent;
+  border: to-rem(1) solid rgba(197, 197, 197, 0.8);
+  white-space: nowrap;
+  transition:
+    color $transition-duration ease-in-out,
+    border-color $transition-duration ease-in-out,
+    background-color $transition-duration ease-in-out;
+
+  @include hover {
+    color: $bg-color;
+    border-color: $bg-color;
+    background-color: rgba($bg-color, 0.02);
+  }
+}

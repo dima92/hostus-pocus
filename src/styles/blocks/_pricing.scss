@@ -1,0 +1,160 @@
+@use "../helpers" as *;
+@use "../variables" as *;
+
+.pricing {
+  padding-block: fluid(100, 50);
+  background-color: $white-color;
+
+  &__container {
+    max-width: to-rem(1232);
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: fluid(60, 35);
+  }
+
+  &__title {
+    @include fluid-text(24, 20, 1.2);
+    font-weight: 500;
+    color: $title-color;
+    margin-bottom: to-rem(17);
+  }
+
+  &__subtitle {
+    font-family: $second-family;
+    font-size: to-rem(14);
+    color: $text-color;
+    line-height: 1.71;
+  }
+
+  &__grid {
+    @include grid($cols: 4, $gap: fluid(51, 16));
+
+    @include respond-to("desktop-sm") {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to("mobile") {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    background-color: $white-color;
+    border-radius: to-rem(6);
+    border: to-rem(1) solid rgba(197, 197, 197, 0.3);
+    padding: to-rem(40) 0 0;
+    min-height: to-rem(360);
+
+    @include flex(column, flex-start, center, to-rem(24));
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition:
+      box-shadow $transition-duration,
+      transform $transition-duration;
+
+    @include hover {
+      box-shadow: 0 to-rem(20) to-rem(40) rgba($black-color, 0.06);
+      transform: translateY(to-rem(-6));
+    }
+
+    &--featured,
+    &:hover {
+      border-color: rgba(197, 197, 197, 0.4);
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: to-rem(4);
+        border-radius: to-rem(6) to-rem(6) 0 0;
+        background-color: $bg-color;
+      }
+
+      .pricing__amount {
+        color: $bg-color;
+      }
+
+      .pricing__footer {
+        background-color: rgba(197, 197, 197, 0.05);
+      }
+
+      .pricing__link {
+        color: $bg-color;
+      }
+    }
+  }
+
+  &__card-title {
+    font-size: to-rem(18);
+    font-weight: 500;
+    color: $title-color;
+    padding-inline: to-rem(24);
+  }
+
+  &__card-text {
+    font-family: $second-family;
+    font-size: to-rem(14);
+    line-height: 1.71;
+    color: $text-color;
+    max-width: to-rem(200);
+    padding-inline: to-rem(24);
+  }
+
+  &__price-box {
+    @include flex(column, center, center, to-rem(4));
+    padding-inline: to-rem(24);
+    margin-bottom: to-rem(20);
+  }
+
+  &__label {
+    font-family: $second-family;
+    font-size: to-rem(14);
+    line-height: 1.71;
+    color: $text-color;
+    text-transform: lowercase;
+  }
+
+  &__amount {
+    font-size: to-rem(32);
+    font-weight: 300;
+    color: #ffaa64;
+  }
+
+  &__footer {
+    width: 100%;
+    margin-top: auto;
+    padding-block: to-rem(20);
+    padding-inline: to-rem(24);
+    border-top: to-rem(1) solid rgba(197, 197, 197, 0.3);
+    @include flex(row, center, center);
+  }
+
+  &__link {
+    @include flex(row, center, center, to-rem(7));
+    font-size: to-rem(13);
+    font-weight: 500;
+    color: $title-color;
+    transition: color $transition-duration;
+
+    @include hover {
+      color: $bg-color;
+
+      .pricing__arrow {
+        transform: translateX(to-rem(4));
+      }
+    }
+  }
+
+  &__arrow {
+    width: to-rem(11);
+    height: to-rem(11);
+    fill: none;
+    stroke: currentColor;
+    transition: transform $transition-duration ease-in-out;
+  }
+}

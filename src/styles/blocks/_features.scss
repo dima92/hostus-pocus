@@ -1,0 +1,101 @@
+@use "../helpers" as *;
+@use "../variables" as *;
+
+.features {
+  padding-block: fluid(100, 50) fluid(230, 80);
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: fluid(153, 40);
+    row-gap: fluid(130, 30);
+    align-items: start;
+
+    @include respond-to("tablet") {
+      grid-template-columns: 1fr;
+      row-gap: to-rem(30);
+    }
+  }
+
+  &__card {
+    max-width: to-rem(480);
+    min-height: to-rem(260);
+    padding: fluid(30, 24);
+    background-color: $white-color;
+    border-radius: to-rem(6);
+    box-shadow: 0 10px 30px rgba($black-color, 0.02);
+    border: to-rem(2) solid rgba(197, 197, 197, 0.15);
+    @include flex(column, flex-start, flex-start, to-rem(15));
+    position: relative;
+    overflow: hidden;
+    transition:
+      background-color $transition-duration ease-in-out,
+      border-color $transition-duration ease-in-out,
+      transform $transition-duration ease-in-out;
+
+    &:nth-child(even) {
+      transform: translateY(to-rem(130));
+
+      @include respond-to("tablet") {
+        transform: translateY(0);
+      }
+    }
+
+    @include hover {
+      background-color: $bg-color;
+      border-color: transparent;
+      background-image: url("../assets/images/red-bg.jpg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+
+      .features__card-title {
+        color: $white-color;
+      }
+
+      .features__card-text {
+        color: $white-color;
+      }
+
+      .features__icon-wrapper {
+        background-color: $white-color;
+        color: $bg-color;
+      }
+
+      .features__icon {
+        fill: rgb(65, 65, 65);
+      }
+    }
+  }
+
+  &__icon-wrapper {
+    @include flex(row, center, center);
+    width: to-rem(60);
+    height: to-rem(60);
+    border-radius: 50%;
+    background-color: $white-color;
+    transition:
+      background-color $transition-duration ease-in-out,
+      color $transition-duration ease-in-out;
+  }
+
+  &__icon {
+    width: to-rem(60);
+    height: to-rem(60);
+    fill: $bg-color;
+    transition: fill $transition-duration ease-in-out;
+  }
+
+  &__card-title {
+    font-size: to-rem(18);
+    font-weight: 500;
+    color: $title-color;
+  }
+
+  &__card-text {
+    font-family: $second-family;
+    font-size: to-rem(14);
+    line-height: 1.71;
+    color: $text-color;
+  }
+}

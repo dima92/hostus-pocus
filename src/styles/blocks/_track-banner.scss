@@ -1,0 +1,53 @@
+@use "../helpers" as *;
+@use "../variables" as *;
+
+.track-banner {
+  width: 100%;
+  min-height: to-rem(340);
+  @include flex(row, center, center);
+
+  background-color: $title-color;
+  background-image: url("/src/assets/images/track-bg.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  padding-block: fluid(40, 30);
+  overflow: hidden;
+
+  &__container {
+    @include flex(row, center, center);
+  }
+
+  &__content {
+    max-width: to-rem(393);
+    @include flex(column, center, center, to-rem(12));
+    text-align: center;
+
+    @include respond-to("tablet") {
+      gap: to-rem(16);
+    }
+  }
+
+  &__title {
+    @include fluid-text(26, 24, 1.2);
+    font-weight: 500;
+    color: $white-color;
+  }
+
+  &__text {
+    font-family: $second-family;
+    font-size: to-rem(14);
+    line-height: 1.71;
+    color: $text-color;
+    margin-bottom: to-rem(30);
+
+    @include respond-to("mobile") {
+      font-size: to-rem(16);
+    }
+  }
+
+  &__btn {
+    padding: to-rem(12) to-rem(20);
+  }
+}

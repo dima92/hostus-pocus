@@ -1,0 +1,62 @@
+@use "../helpers" as *;
+@use "../variables" as *;
+
+.hero {
+  padding-block: fluid(145, 40);
+  overflow: hidden;
+
+  &__container {
+    @include flex(row, space-between, center, to-rem(107));
+
+    @include respond-to("tablet") {
+      flex-direction: column-reverse;
+      text-align: center;
+      gap: to-rem(48);
+    }
+  }
+
+  &__media {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: to-rem(460);
+
+    @include respond-to("tablet") {
+      max-width: to-rem(380);
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  &__content {
+    max-width: to-rem(480);
+
+    @include respond-to("tablet") {
+      @include flex(column, center, center);
+      max-width: 100%;
+    }
+  }
+
+  &__title {
+    @include fluid-text(24, 20, 1.2);
+    font-weight: 500;
+    color: $title-color;
+    margin-bottom: to-rem(12);
+  }
+
+  &__text {
+    font-family: $second-family;
+    font-size: to-rem(16);
+    font-weight: 400;
+    line-height: 1.75;
+    color: $text-color;
+    margin-bottom: to-rem(30);
+  }
+
+  &__btn {
+    padding: to-rem(12) to-rem(20);
+  }
+}

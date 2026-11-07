@@ -1,0 +1,140 @@
+@use "sass:color";
+@use "../helpers" as *;
+@use "../variables" as *;
+
+.header {
+  width: 100%;
+  padding-block: fluid(39, 20);
+  position: relative;
+
+  &__container {
+    @include flex(row, space-between, center);
+  }
+
+  &__burger {
+    display: none;
+
+    @include respond-to("tablet") {
+      @include flex(column, space-between, center);
+      width: to-rem(30);
+      height: to-rem(18);
+      background: transparent;
+      border: none;
+      z-index: 100;
+      padding: 0;
+
+      span {
+        display: block;
+        width: 100%;
+        height: to-rem(3);
+        background-color: $bg-color;
+        transition:
+          transform $transition-duration ease-in-out,
+          opacity $transition-duration ease-in-out,
+          width $transition-duration ease-in-out;
+        transform-origin: center;
+      }
+
+      &.is-open {
+        span:nth-child(1) {
+          transform: translateY(to-rem(7.5)) rotate(45deg);
+        }
+        span:nth-child(2) {
+          opacity: 0;
+          transform: scaleX(0);
+        }
+        span:nth-child(3) {
+          transform: translateY(to-rem(-7.5)) rotate(-45deg);
+        }
+      }
+    }
+  }
+}
+
+.nav {
+  @include flex(row, space-between, center, to-rem(61));
+
+  @include respond-to("tablet") {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: to-rem(300);
+    height: 100vh;
+    background-color: $white-color;
+    box-shadow: -5px 0 25px rgba($black-color, 0.05);
+    padding: to-rem(100) to-rem(40) to-rem(40);
+    z-index: 99;
+    flex-direction: column;
+    align-items: flex-start;
+    transform: translateX(100%);
+    transition: transform $transition-duration ease-in-out;
+
+    &.is-open {
+      transform: translateX(0);
+    }
+  }
+
+  &__list {
+    @include flex(row, space-between, center, to-rem(61));
+
+    @include respond-to("tablet") {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: to-rem(24);
+    }
+  }
+
+  &__link {
+    font-size: to-rem(13);
+    font-weight: 300;
+    color: $link-color;
+    position: relative;
+
+    @include hover {
+      color: $bg-color;
+    }
+  }
+
+  &__btn {
+    @include respond-to("tablet") {
+      width: 100%;
+    }
+  }
+}
+
+.btn {
+  @include flex(row, center, center, to-rem(10), $isInline: true);
+  border-radius: to-rem(4);
+  padding: to-rem(10) to-rem(20);
+  font-weight: 500;
+  font-size: to-rem(13);
+  color: $white-color;
+  background-color: $bg-color;
+  border: none;
+  white-space: nowrap;
+
+  &__arrow {
+    width: to-rem(20);
+    height: to-rem(10);
+    fill: transparent;
+    stroke: currentColor;
+    transition: transform $transition-duration ease-in-out;
+  }
+
+  @include hover {
+    background-color: $title-color;
+
+    .btn__arrow {
+      transform: translateX(to-rem(4));
+    }
+  }
+}
+
+.logo__icon {
+  position: relative;
+  z-index: 100;
+  fill: rgb(192, 0, 0);
+  width: to-rem(91);
+  height: to-rem(34);
+}
